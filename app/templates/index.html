@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.css')}}">
-
+  <!-- Four Golden Signal: Medir o tempo de carregamento dos recursos CSS -->
 </head>
 
 <body class="hold-transition skin-blue layout-top-nav">
@@ -109,7 +109,8 @@
   <script src="{{ url_for('static', filename='js/app.min.js')}}"></script>
   <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
   <script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js')}}"></script>
-
+  <!-- Four Golden Signal:  Medir o tempo de carregamento dos recursos JavaScript -->
+  <!-- Tracing para incluir rastreamento ou instrumentação para medir o desempenho da página -->
   <script>
     $(function () {
       $("#dataphone").DataTable();
