@@ -33,7 +33,7 @@ def addphone():
             flash("A new phone number has been added")
         else:
             flash("A new phone number can not be added")
-
+#Adicionar Tracing/*
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
@@ -48,12 +48,14 @@ def update(id):
     else:
         session['update'] = id
         return render_template('update.html', data = data)
+        #Adicionar Tracing/*
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     # Four Golden Signal por endpoint
     if request.method == 'POST' and request.form['update']:
         # Adicionar LOG
+        #Adicionar Tracing/*
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
 
@@ -71,6 +73,7 @@ def updatephone():
 def delete(id):
     data = db.read(id);
     #Adicionar LOG
+    #Adicionar Tracing/*
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
@@ -81,13 +84,13 @@ def delete(id):
 # Four Golden Signal por endpoint
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
-
+#Adicionar Tracing/*
         if db.delete(session['delete']):
             flash('A phone number has been deleted')
 
         else:
             flash('A phone number can not be deleted')
-
+#Adicionar Tracing/*
         session.pop('delete', None)
 
         return redirect(url_for('index'))
