@@ -13,7 +13,7 @@ class Database:
     def read(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
-
+#Incluir monitoramento Tracing
         try:
             if id == None:
                 cursor.execute("SELECT * FROM phone_book order by name asc")
@@ -25,7 +25,7 @@ class Database:
             return ()
         finally:
             con.close()
-
+#Incluir monitoramento Tracing
     def insert(self,data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -41,7 +41,7 @@ class Database:
             return False
         finally:
             con.close()
-
+#Incluir monitoramento Tracing
     def update(self, id, data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -57,7 +57,7 @@ class Database:
             return False
         finally:
             con.close()
-
+#Incluir monitoramento Tracing
     def delete(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
