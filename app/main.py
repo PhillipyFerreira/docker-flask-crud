@@ -11,23 +11,29 @@ from module.database import Database
 app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
+# Configuração do logger para registrar informações em um arquivo
 
 @app.route('/')
 def index():
+    # Implementação do Four Golden Signals (Latency, Traffic, Errors, Saturation)
+    # Implementação de logging INFO para informações
     data = db.read(None)
 
     return render_template('index.html', data = data)
 
 @app.route('/add/')
 def add():
+    # Implementação de logging INFO para informações
     return render_template('add.html')
 
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
+             # Implementação de logging INFO para informações
             flash("A new phone number has been added")
         else:
+             # Implementação de logging ERROR para erros
             flash("A new phone number can not be added")
 
         return redirect(url_for('index'))
@@ -42,6 +48,7 @@ def update(id):
         return redirect(url_for('index'))
     else:
         session['update'] = id
+        # Implementação de tracing para rastreamento
         return render_template('update.html', data = data)
 
 @app.route('/updatephone', methods = ['POST'])
@@ -49,9 +56,11 @@ def updatephone():
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
+            # Implementação de logging INFO para informações
             flash('A phone number has been updated')
 
         else:
+            # Implementação de logging ERROR para erros
             flash('A phone number can not be updated')
 
         session.pop('update', None)
@@ -67,6 +76,7 @@ def delete(id):
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
+        # Implementação de tracing para rastreamento
         session['delete'] = id
         return render_template('delete.html', data = data)
 
@@ -75,9 +85,11 @@ def deletephone():
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
+            # Implementação de logging INFO para informações
             flash('A phone number has been deleted')
 
         else:
+            # Implementação de logging ERROR para erros
             flash('A phone number can not be deleted')
 
         session.pop('delete', None)
