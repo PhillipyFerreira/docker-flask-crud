@@ -3,15 +3,17 @@ Created on Sep 10, 2017
 
 @author: Pavan Aleti
 '''
-
+# Adicionar Tracing
 from flask import Flask, flash, render_template, redirect, url_for, request, session
 from module.database import Database
 
-
+# Adicionar tracing
 app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+# Adicionar LOG
+#Adicionar tracing
 @app.route('/')
 def index():
     data = db.read(None)
@@ -19,6 +21,7 @@ def index():
     return render_template('index.html', data = data)
 
 @app.route('/add/')
+#Adicionar Traccing
 def add():
     return render_template('add.html')
 
@@ -50,7 +53,7 @@ def update(id):
 def updatephone():
     # Four Golden Signal por endpoint
     if request.method == 'POST' and request.form['update']:
-
+        # Adicionar LOG
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
 
@@ -67,7 +70,7 @@ def updatephone():
 # Four Golden Signal por endpoint
 def delete(id):
     data = db.read(id);
-
+    #Adicionar LOG
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
@@ -95,6 +98,6 @@ def deletephone():
 # Four Golden Signal por endpoint
 def page_not_found(error):
     return render_template('error.html')
-
+#Adicionar LOG
 if __name__ == '__main__':
     app.run(port=5000, host="0.0.0.0")
