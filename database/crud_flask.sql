@@ -6,7 +6,8 @@
 -- Generation Time: Jan 30, 2017 at 10:34 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.13-0ubuntu0.16.04.1
-
+# Adicionar LOG
+  
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -25,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `phone_book`
 --
-
+# Adicionar LOG
 CREATE TABLE IF NOT EXISTS `phone_book` (
   `id` int(5) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `phone_book` (
 -- Dumping data for table `phone_book`
 --
 
+# Adicionar LOG
 INSERT INTO `phone_book` (`id`, `name`, `phone`, `address`) VALUES
 (16, 'Pavan Kumar Aleti', '07438587523', 'London');
 
@@ -47,6 +49,7 @@ INSERT INTO `phone_book` (`id`, `name`, `phone`, `address`) VALUES
 --
 -- Indexes for table `phone_book`
 --
+# Adicionar LOG
 ALTER TABLE `phone_book`
   ADD PRIMARY KEY (`id`);
 
@@ -57,6 +60,7 @@ ALTER TABLE `phone_book`
 --
 -- AUTO_INCREMENT for table `phone_book`
 --
+# Adicionar LOG
 ALTER TABLE `phone_book`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
