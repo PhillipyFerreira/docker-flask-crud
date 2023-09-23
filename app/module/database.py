@@ -10,6 +10,7 @@ class Database:
     def connect(self):
         return pymysql.connect("phonebook-mysql","dev","dev","crud_flask" )
 
+    #Log TRACING para listagem dos dados do CRUD
     def read(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -26,6 +27,7 @@ class Database:
         finally:
             con.close()
 
+    #Log TRACING para Insert dos dados do CRUD
     def insert(self,data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -42,6 +44,7 @@ class Database:
         finally:
             con.close()
 
+    #Log TRACING para atualizar os dados do CRUD
     def update(self, id, data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -58,6 +61,7 @@ class Database:
         finally:
             con.close()
 
+    #Log TRACING para delete dos dados do CRUD
     def delete(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
