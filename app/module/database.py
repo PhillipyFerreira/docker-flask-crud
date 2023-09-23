@@ -8,9 +8,11 @@ import pymysql
 
 class Database:
     def connect(self):
+        # Inserir Logging
         return pymysql.connect("phonebook-mysql","dev","dev","crud_flask" )
 
     def read(self, id):
+        # Inserir Logging
         con = Database.connect(self)
         cursor = con.cursor()
 
@@ -25,8 +27,10 @@ class Database:
             return ()
         finally:
             con.close()
+            # Inserir Tracing
 
     def insert(self,data):
+        # Inserir Logging
         con = Database.connect(self)
         cursor = con.cursor()
 
@@ -41,8 +45,10 @@ class Database:
             return False
         finally:
             con.close()
+            # Inserir Tracing
 
     def update(self, id, data):
+        # Inserir Logging
         con = Database.connect(self)
         cursor = con.cursor()
 
@@ -57,8 +63,10 @@ class Database:
             return False
         finally:
             con.close()
+            # Inserir Tracing
 
     def delete(self, id):
+        # Inserir Logging
         con = Database.connect(self)
         cursor = con.cursor()
 
@@ -73,3 +81,5 @@ class Database:
             return False
         finally:
             con.close()
+            # Inserir Tracing
+
