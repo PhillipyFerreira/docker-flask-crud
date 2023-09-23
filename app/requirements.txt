@@ -1,2 +1,6 @@
 flask
 pymysql
+prometheus-flask-exporter
+opentelemetry-api 
+opentelemetry-sdk 
+opentelemetry-instrumentation-flask
