@@ -15,7 +15,7 @@ db = Database()
 @app.route('/') 
 def index():
     data = db.read(None)
-
+ # Inserir métrica de Logging
     return render_template('index.html', data = data)
 #Aqui deve ter um monitoramento de Four Golden Signal por endpoint
 @app.route('/add/') 
@@ -29,7 +29,7 @@ def addphone():
             flash("A new phone number has been added")
         else:
             flash("A new phone number can not be added")
-
+ # Inserir métrica de Logging
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
@@ -37,7 +37,7 @@ def addphone():
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
-
+ # Inserir métrica de Logging
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
@@ -47,10 +47,10 @@ def update(id):
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     if request.method == 'POST' and request.form['update']:
-
+ # Inserir monitoramento de Tracing
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
-
+ # Inserir métrica de Logging
         else:
             flash('A phone number can not be updated')
 
@@ -73,7 +73,7 @@ def delete(id):
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
-
+  # Inserir monitoramento de Tracing
         if db.delete(session['delete']):
             flash('A phone number has been deleted')
 
