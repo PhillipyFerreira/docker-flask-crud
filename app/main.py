@@ -24,6 +24,7 @@ def add():
 
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
+    #aqui colocar for golden signal
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
             flash("A new phone number has been added")
@@ -33,9 +34,11 @@ def addphone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+    #aqui colocar os logs
 
 @app.route('/update/<int:id>/')
 def update(id):
+    #aqui colocar for golden signal
     data = db.read(id);
 
     if len(data) == 0:
@@ -43,9 +46,11 @@ def update(id):
     else:
         session['update'] = id
         return render_template('update.html', data = data)
+    #aqui colocar os logs
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
+    #aqui colocar for golden signal
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
@@ -59,9 +64,11 @@ def updatephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+    #aqui colocar os logs
 
 @app.route('/delete/<int:id>/')
 def delete(id):
+    #aqui colocar for golden signal
     data = db.read(id);
 
     if len(data) == 0:
@@ -69,9 +76,11 @@ def delete(id):
     else:
         session['delete'] = id
         return render_template('delete.html', data = data)
+    #aqui colocar os logs
 
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
+    #aqui colocar for golden signal
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
@@ -85,6 +94,8 @@ def deletephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+    
+    #aqui colocar os logs
 
 @app.errorhandler(404)
 def page_not_found(error):
