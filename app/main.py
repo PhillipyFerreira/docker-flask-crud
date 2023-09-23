@@ -15,7 +15,7 @@ db = Database()
 @app.route('/')
 def index():
     data = db.read(None)
-
+# Aqui tem que ter um log
     return render_template('index.html', data = data)
 # Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/add/')
@@ -37,7 +37,7 @@ def addphone():
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
-
+# Aqui tem que ter um log
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
@@ -47,7 +47,7 @@ def update(id):
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     if request.method == 'POST' and request.form['update']:
-
+# Aqui tem que ter um monitoramento trace
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
 
@@ -73,7 +73,7 @@ def delete(id):
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
-
+# Aqui tem que ter um monitoramento trace
         if db.delete(session['delete']):
             flash('A phone number has been deleted')
 
