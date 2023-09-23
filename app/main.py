@@ -12,16 +12,19 @@ app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+#Inclusão Four golden sigal endpoint INICIO listagem
 @app.route('/')
 def index():
     data = db.read(None)
-
+    
     return render_template('index.html', data = data)
 
 @app.route('/add/')
 def add():
     return render_template('add.html')
 
+#Inclusão Four golden sigal endpoint POST para verificação de quantidade de requisiçoes
+#Inclusão log de nível DEBUG
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
     if request.method == 'POST' and request.form['save']:
@@ -29,11 +32,13 @@ def addphone():
             flash("A new phone number has been added")
         else:
             flash("A new phone number can not be added")
+            #Inclusão log de nível ERROR
 
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
 
+#Inclusão log de nível DEBUG
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
@@ -43,7 +48,9 @@ def update(id):
     else:
         session['update'] = id
         return render_template('update.html', data = data)
-
+        
+#Inclusão Four golden sigal endpoint POST para verificação de quantidade de requisiçoes
+#Inclusão log de nível DEBUG
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     if request.method == 'POST' and request.form['update']:
@@ -53,6 +60,7 @@ def updatephone():
 
         else:
             flash('A phone number can not be updated')
+             #Inclusão log de nível ERROR
 
         session.pop('update', None)
 
@@ -60,6 +68,7 @@ def updatephone():
     else:
         return redirect(url_for('index'))
 
+#Inclusão log de nível DEBUG
 @app.route('/delete/<int:id>/')
 def delete(id):
     data = db.read(id);
@@ -70,6 +79,8 @@ def delete(id):
         session['delete'] = id
         return render_template('delete.html', data = data)
 
+#Inclusão Four golden sigal endpoint POST para verificação de quantidade de requisiçoes
+#Inclusão log de nível DEBUG
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
@@ -79,6 +90,7 @@ def deletephone():
 
         else:
             flash('A phone number can not be deleted')
+            #Inclusão log de nível DEBUG
 
         session.pop('delete', None)
 
