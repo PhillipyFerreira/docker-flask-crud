@@ -7,23 +7,26 @@ Created on Sep 10, 2017
 from flask import Flask, flash, render_template, redirect, url_for, request, session
 from module.database import Database
 
-
 app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+# Ponto de inclusão de Four Golden Signal (Início)
 @app.route('/')
 def index():
     data = db.read(None)
 
-    return render_template('index.html', data = data)
+    return render_template('index.html', data=data)
+# Ponto de inclusão de Four Golden Signal (Fim)
 
 @app.route('/add/')
 def add():
     return render_template('add.html')
 
-@app.route('/addphone', methods = ['POST', 'GET'])
+# Ponto de inclusão de logs de nível DEBUG (Início)
+@app.route('/addphone', methods=['POST', 'GET'])
 def addphone():
+    app.logger.debug('Debug log message')  # Exemplo de log DEBUG
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
             flash("A new phone number has been added")
@@ -33,19 +36,22 @@ def addphone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+# Ponto de inclusão de logs de nível DEBUG (Fim)
 
 @app.route('/update/<int:id>/')
 def update(id):
-    data = db.read(id);
+    data = db.read(id)
 
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
         session['update'] = id
-        return render_template('update.html', data = data)
+        return render_template('update.html', data=data)
 
-@app.route('/updatephone', methods = ['POST'])
+# Ponto de inclusão de logs de nível INFO (Início)
+@app.route('/updatephone', methods=['POST'])
 def updatephone():
+    app.logger.info('Info log message')  # Exemplo de log INFO
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
@@ -59,19 +65,22 @@ def updatephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+# Ponto de inclusão de logs de nível INFO (Fim)
 
 @app.route('/delete/<int:id>/')
 def delete(id):
-    data = db.read(id);
+    data = db.read(id)
 
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
         session['delete'] = id
-        return render_template('delete.html', data = data)
+        return render_template('delete.html', data=data)
 
-@app.route('/deletephone', methods = ['POST'])
+# Ponto de inclusão de logs de nível WARN (Início)
+@app.route('/deletephone', methods=['POST'])
 def deletephone():
+    app.logger.warning('Warning log message')  # Exemplo de log WARN
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
@@ -85,10 +94,16 @@ def deletephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+# Ponto de inclusão de logs de nível WARN (Fim)
 
 @app.errorhandler(404)
 def page_not_found(error):
+    # Ponto de inclusão de logs de nível ERROR (Início)
+    app.logger.error('Error log message')  # Exemplo de log ERROR
+    # Ponto de inclusão de logs de nível ERROR (Fim)
     return render_template('error.html')
 
 if __name__ == '__main__':
-    app.run(port=5000, host="0.0.0.0")
+    # Ponto de inclusão de tracing (Início)
+    app.run(port=5000, host="0.0.0.0", debug=True)  # Habilita o modo de depuração para tracing
+    # Ponto de inclusão de tracing (Fim)
