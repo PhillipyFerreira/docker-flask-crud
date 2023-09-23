@@ -23,6 +23,7 @@ def add():
     return render_template('add.html')
 
 @app.route('/addphone', methods = ['POST', 'GET'])
+# Adicionar um LOG
 def addphone():
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
@@ -35,6 +36,7 @@ def addphone():
         return redirect(url_for('index'))
 
 @app.route('/update/<int:id>/')
+# Adicionar um LOG
 def update(id):
     data = db.read(id);
 
@@ -46,6 +48,7 @@ def update(id):
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
+    # Adicionar um LOG
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
@@ -61,6 +64,7 @@ def updatephone():
         return redirect(url_for('index'))
 
 @app.route('/delete/<int:id>/')
+#Adicionar um LOG
 def delete(id):
     data = db.read(id);
 
@@ -71,6 +75,7 @@ def delete(id):
         return render_template('delete.html', data = data)
 
 @app.route('/deletephone', methods = ['POST'])
+# Adicionar um LOG
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
 
@@ -87,6 +92,7 @@ def deletephone():
         return redirect(url_for('index'))
 
 @app.errorhandler(404)
+#Adicionar um LOG 
 def page_not_found(error):
     return render_template('error.html')
 
