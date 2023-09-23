@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `phone_book`
 --
 # Adicionar LOG
+  #Adicionar Tracing
 CREATE TABLE IF NOT EXISTS `phone_book` (
   `id` int(5) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `phone_book` (
 --
 
 # Adicionar LOG
+  #Adicionar Tracing
 INSERT INTO `phone_book` (`id`, `name`, `phone`, `address`) VALUES
 (16, 'Pavan Kumar Aleti', '07438587523', 'London');
 
@@ -49,6 +51,7 @@ INSERT INTO `phone_book` (`id`, `name`, `phone`, `address`) VALUES
 --
 -- Indexes for table `phone_book`
 --
+  #Adicionar Tracing
 # Adicionar LOG
 ALTER TABLE `phone_book`
   ADD PRIMARY KEY (`id`);
@@ -61,6 +64,7 @@ ALTER TABLE `phone_book`
 -- AUTO_INCREMENT for table `phone_book`
 --
 # Adicionar LOG
+    #Adicionar Tracing
 ALTER TABLE `phone_book`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
