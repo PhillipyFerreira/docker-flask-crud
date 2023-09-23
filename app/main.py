@@ -2,7 +2,10 @@
 Created on Sep 10, 2017
 
 @author: Pavan Aleti
+
 '''
+##  Nesta página deveria ter um Four Golden Signal por endpoint para controle de requisições passadas pelas rotas estabelecidas
+##  Bem como a inclusão de logs de níveis DEUG, INFO, WARN, ERROR e FATAL
 
 from flask import Flask, flash, render_template, redirect, url_for, request, session
 from module.database import Database
