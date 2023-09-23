@@ -11,17 +11,17 @@ from module.database import Database
 app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/')
 def index():
     data = db.read(None)
-
+# Aqui tem que ter um log
     return render_template('index.html', data = data)
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/add/')
 def add():
     return render_template('add.html')
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
     if request.method == 'POST' and request.form['save']:
@@ -33,21 +33,21 @@ def addphone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
-
+# Aqui tem que ter um log
     if len(data) == 0:
         return redirect(url_for('index'))
     else:
         session['update'] = id
         return render_template('update.html', data = data)
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     if request.method == 'POST' and request.form['update']:
-
+# Aqui tem que ter um monitoramento trace
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
 
@@ -59,7 +59,7 @@ def updatephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/delete/<int:id>/')
 def delete(id):
     data = db.read(id);
@@ -69,11 +69,11 @@ def delete(id):
     else:
         session['delete'] = id
         return render_template('delete.html', data = data)
-
+# Aqui tem que ter um monitoramento Golden Signal - Tráfego
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
-
+# Aqui tem que ter um monitoramento trace
         if db.delete(session['delete']):
             flash('A phone number has been deleted')
 
@@ -85,7 +85,7 @@ def deletephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
-
+# Aqui tem que ter um monitoramento Golden Signal - EndPoint
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('error.html')
