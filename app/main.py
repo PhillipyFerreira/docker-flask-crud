@@ -11,18 +11,18 @@ from module.database import Database
 app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
-
-@app.route('/')
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
+@app.route('/') 
 def index():
     data = db.read(None)
 
     return render_template('index.html', data = data)
-
-@app.route('/add/')
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
+@app.route('/add/') 
 def add():
     return render_template('add.html')
-
-@app.route('/addphone', methods = ['POST', 'GET'])
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
+@app.route('/addphone', methods = ['POST', 'GET']) #Aqui deve ter um monitoramento de Golden Signal
 def addphone():
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
@@ -33,7 +33,7 @@ def addphone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
-
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
@@ -43,7 +43,7 @@ def update(id):
     else:
         session['update'] = id
         return render_template('update.html', data = data)
-
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
     if request.method == 'POST' and request.form['update']:
@@ -59,7 +59,7 @@ def updatephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
-
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
 @app.route('/delete/<int:id>/')
 def delete(id):
     data = db.read(id);
@@ -69,7 +69,7 @@ def delete(id):
     else:
         session['delete'] = id
         return render_template('delete.html', data = data)
-
+#Aqui deve ter um monitoramento de Four Golden Signal por endpoint
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
     if request.method == 'POST' and request.form['delete']:
