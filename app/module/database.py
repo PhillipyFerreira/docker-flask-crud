@@ -7,6 +7,7 @@ Created on Sep 10, 2017
 import pymysql
 
 # Adicionar LOG
+
 class Database:
     def connect(self):
         return pymysql.connect("phonebook-mysql","dev","dev","crud_flask" )
@@ -27,6 +28,7 @@ class Database:
         finally:
             con.close()
 #Adicionar LOG
+    #Adicionar Tracing
     def insert(self,data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -43,6 +45,7 @@ class Database:
         finally:
             con.close()
 #Adicionar LOG
+    #Adicionar Tracing
     def update(self, id, data):
         con = Database.connect(self)
         cursor = con.cursor()
@@ -59,6 +62,7 @@ class Database:
         finally:
             con.close()
 #Adicionar LOG
+    #Adicionar Tracing
     def delete(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
