@@ -14,9 +14,11 @@ db = Database()
 
 @app.route('/')
 def index():
-    data = db.read(None)
+    # Inserir métrica de Logging
+    data = db.read(None) 
 
     return render_template('index.html', data = data)
+    # Inserir métrica Golden Signal
 
 @app.route('/add/')
 def add():
@@ -24,6 +26,7 @@ def add():
 
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
+    # Inserir métrica de Logging
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
             flash("A new phone number has been added")
@@ -33,9 +36,12 @@ def addphone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+        # Inserir métrica Golden Signal
+        # Inserir Tracing
 
 @app.route('/update/<int:id>/')
 def update(id):
+    # Inserir métrica de Logging
     data = db.read(id);
 
     if len(data) == 0:
@@ -43,6 +49,8 @@ def update(id):
     else:
         session['update'] = id
         return render_template('update.html', data = data)
+    # Inserir métrica Golden Signal
+    # Inserir Tracing
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
@@ -59,9 +67,12 @@ def updatephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+        # Inserir Tracing
+        # Inserir métrica Golden Signal
 
 @app.route('/delete/<int:id>/')
 def delete(id):
+    # Inserir métrica de Logging
     data = db.read(id);
 
     if len(data) == 0:
@@ -69,9 +80,11 @@ def delete(id):
     else:
         session['delete'] = id
         return render_template('delete.html', data = data)
+        # Inserir Tracing
 
 @app.route('/deletephone', methods = ['POST'])
-def deletephone():
+def deletephone():  
+    # Inserir métrica de Logging
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
@@ -85,10 +98,13 @@ def deletephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+        # Inserir Tracing
 
 @app.errorhandler(404)
 def page_not_found(error):
+    # Inserir métrica de Logging
     return render_template('error.html')
 
 if __name__ == '__main__':
+    # Inserir métrica de Logging
     app.run(port=5000, host="0.0.0.0")
