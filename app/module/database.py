@@ -4,6 +4,9 @@ Created on Sep 10, 2017
 @author: Pavan Aleti
 '''
 
+##  Nesta página deveria ter TRACING para controle de except das transações de SQL
+##  Bem como a inclusão de logs de níveis DEUG, INFO, WARN, ERROR e FATAL
+
 import pymysql
 
 class Database:
