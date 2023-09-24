@@ -20,6 +20,7 @@ def index():
 # Inclusão de logging de INFO.
     return render_template('index.html', data = data)
 
+# Inclusão de logging de INFO.
 @app.route('/add/')
 def add():
     return render_template('add.html')
