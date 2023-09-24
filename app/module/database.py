@@ -4,6 +4,11 @@ Created on Sep 10, 2017
 @author: Pavan Aleti
 '''
 
+#Iniciar um monitoramento por endpoint e de log para o processo de coleta, análise e ação em dados de log 
+#e também iniciar um Tracing, que é a capacidade de rastrear o caminho completo da execução de uma requisição ou transação através do sistema, 
+#para monitorar transações do banco de dados.
+
+
 import pymysql
 
 class Database:
