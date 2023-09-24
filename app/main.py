@@ -4,6 +4,9 @@ Created on Sep 10, 2017
 @author: Pavan Aleti
 '''
 
+##  Nesta página deveria ter um Four Golden Signal por endpoint para controle de requisições passadas pelas rotas estabelecidas
+##  Bem como a inclusão de logs de níveis DEUG, INFO, WARN, ERROR e FATAL
+
 from flask import Flask, flash, render_template, redirect, url_for, request, session
 from module.database import Database
 
@@ -12,6 +15,7 @@ app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+#Iniciar um monitoramento por endpoint e de log para o processo de coleta, análise e ação em dados de log 
 @app.route('/')
 def index():
     data = db.read(None)
