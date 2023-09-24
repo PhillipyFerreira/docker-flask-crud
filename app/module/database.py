@@ -10,10 +10,12 @@ class Database:
     def connect(self):
         return pymysql.connect("phonebook-mysql","dev","dev","crud_flask" )
 
+    # Inclusão de logging de INFO.
     def read(self, id):
         con = Database.connect(self)
         cursor = con.cursor()
 
+        # Inclusão de logging de INFO.
         try:
             if id == None:
                 cursor.execute("SELECT * FROM phone_book order by name asc")
@@ -22,8 +24,10 @@ class Database:
 
             return cursor.fetchall()
         except:
+            # Inclusão de logging CRITICAL / FATAL.
             return ()
         finally:
+            # Inclusão de logging de INFO.
             con.close()
 
     def insert(self,data):
