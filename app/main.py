@@ -12,10 +12,12 @@ app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+# Inclusão de logging de INFO.
 @app.route('/')
 def index():
     data = db.read(None)
-
+    
+# Inclusão de logging de INFO.
     return render_template('index.html', data = data)
 
 @app.route('/add/')
