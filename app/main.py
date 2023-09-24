@@ -12,10 +12,11 @@ app = Flask(__name__)
 app.secret_key = "mys3cr3tk3y"
 db = Database()
 
+#METRICA GOLDEN SIGNAL 
 @app.route('/')
 def index():
     data = db.read(None)
-
+ 
     return render_template('index.html', data = data)
 
 @app.route('/add/')
@@ -24,10 +25,13 @@ def add():
 
 @app.route('/addphone', methods = ['POST', 'GET'])
 def addphone():
+    # DEBUG
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
+            # INFO
             flash("A new phone number has been added")
         else:
+            # INFO
             flash("A new phone number can not be added")
 
         return redirect(url_for('index'))
@@ -49,9 +53,11 @@ def updatephone():
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
+            # INFO
             flash('A phone number has been updated')
 
         else:
+            # INFO
             flash('A phone number can not be updated')
 
         session.pop('update', None)
@@ -65,6 +71,7 @@ def delete(id):
     data = db.read(id);
 
     if len(data) == 0:
+        # WARNING 
         return redirect(url_for('index'))
     else:
         session['delete'] = id
@@ -75,9 +82,11 @@ def deletephone():
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
+            # INFO
             flash('A phone number has been deleted')
 
         else:
+            # INFO
             flash('A phone number can not be deleted')
 
         session.pop('delete', None)
@@ -88,6 +97,7 @@ def deletephone():
 
 @app.errorhandler(404)
 def page_not_found(error):
+    # ERROR
     return render_template('error.html')
 
 if __name__ == '__main__':
