@@ -34,6 +34,8 @@ def addphone():
     else:
         return redirect(url_for('index'))
 
+#inserir aqui TRACING
+
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
@@ -85,6 +87,8 @@ def deletephone():
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
+
+#Four Golden Signal por endpoint
 
 @app.errorhandler(404)
 def page_not_found(error):
