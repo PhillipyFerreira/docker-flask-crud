@@ -26,25 +26,30 @@ def add():
     return render_template('add.html')
 
 @app.route('/addphone', methods = ['POST', 'GET'])
+
+# Four Golden Signal (Latência, Tráfico e Saturação)
 # Inclusão de logging de INFO.
 def addphone():
     if request.method == 'POST' and request.form['save']:
         if db.insert(request.form):
             flash("A new phone number has been added")
         else:
+            # Four Golden Signal (Erro)
             # Inclusão de logging de ERROR.
             flash("A new phone number can not be added")
-            
+
         # Inclusão de logging de INFO.
         return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
 
+# Four Golden Signal (Latência, Tráfico e Saturação)
 # Inclusão de logging de INFO.
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
 
+    # Inclusão de logging de WARNING.
     # Inclusão de logging de INFO.
     if len(data) == 0:
         return redirect(url_for('index'))
@@ -55,12 +60,14 @@ def update(id):
 
 @app.route('/updatephone', methods = ['POST'])
 def updatephone():
+    # Four Golden Signal (Latência, Tráfico e Saturação)
     # Inclusão de logging de INFO.
     if request.method == 'POST' and request.form['update']:
 
         if db.update(session['update'], request.form):
             flash('A phone number has been updated')
-            
+
+        # Four Golden Signal (Erro)
         # Inclusão de logging de ERROR.   
         else:
             flash('A phone number can not be updated')
@@ -87,12 +94,14 @@ def delete(id):
 
 @app.route('/deletephone', methods = ['POST'])
 def deletephone():
+    # Four Golden Signal (Latência, Tráfico e Saturação)
     # Inclusão de logging de INFO.
     if request.method == 'POST' and request.form['delete']:
 
         if db.delete(session['delete']):
             flash('A phone number has been deleted')
 
+        # Four Golden Signal (Erro)
         # Inclusão de logging de ERROR.
         else:
             flash('A phone number can not be deleted')
@@ -108,6 +117,7 @@ def deletephone():
 @app.errorhandler(404)
 def page_not_found(error):
     # Inclusão de logging de WARNING.
+    # Inclusão de logging de INFO.
     return render_template('error.html')
 
 if __name__ == '__main__':
