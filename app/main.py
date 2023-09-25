@@ -88,6 +88,8 @@ def deletephone():
     else:
         return redirect(url_for('index'))
 
+#Four Golden Signal por endpoint
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('error.html')
