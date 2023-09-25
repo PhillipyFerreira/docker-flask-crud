@@ -34,6 +34,8 @@ def addphone():
     else:
         return redirect(url_for('index'))
 
+#inserir aqui TRACING
+
 @app.route('/update/<int:id>/')
 def update(id):
     data = db.read(id);
