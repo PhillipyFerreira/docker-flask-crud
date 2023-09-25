@@ -66,6 +66,8 @@ class Database:
             cursor.execute("DELETE FROM phone_book where id = %s", (id,))
             con.commit()
 
+#Logs de TRACING
+            
             return True
         except:
             con.rollback()
