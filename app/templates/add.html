@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  
+
   <title>Phone Book</title>
-  
+
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css')}}">
@@ -28,13 +29,13 @@
     </header>
 
     <div class="content-wrapper">
-      <div class="container">  
+      <div class="container">
         <section class="content">
           <div class="box box-info">
             <div class="box-header with-border">
-            	<center>
-            		<h3 class="box-title">Add Phone Number</h3>
-            	</center>
+              <center>
+                <h3 class="box-title">Add Phone Number</h3>
+              </center>
             </div>
 
             <form class="form-horizontal" method="POST" action="/addphone">
@@ -46,25 +47,28 @@
                     <input name="name" type="text" class="form-control" placeholder="Name" autocomplete="off" required>
                   </div>
                 </div>
-                
+
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Phone Number</label>
 
                   <div class="col-sm-10">
-                    <input name="phone" type="text" class="form-control" placeholder="Phone Number" autocomplete="off" required>
+                    <input name="phone" type="text" class="form-control" placeholder="Phone Number" autocomplete="off"
+                      required>
                   </div>
                 </div>
-                
+
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Address</label>
 
                   <div class="col-sm-10">
-                    <input name="address" type="text" class="form-control" placeholder="Address" autocomplete="off" required>
+                    <input name="address" type="text" class="form-control" placeholder="Address" autocomplete="off"
+                      required>
                   </div>
                 </div>
               </div>
 
               <div class="box-footer">
+                <!--Tracing - Intrumentação detalhada-->
                 <a href="/"><button type="button" class="btn btn-default">Cancel</button></a>
                 <input name="save" type="submit" class="btn btn-info pull-right" value="Save">
               </div>
@@ -84,7 +88,7 @@
       </div>
     </footer>
   </div>
-  
+
 
   <script src="{{ url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
@@ -95,9 +99,10 @@
   <script>
     $(function () {
       $("#dataphone").DataTable();
-      
+
     });
   </script>
 
 </body>
+
 </html>
